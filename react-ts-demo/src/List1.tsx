@@ -1,4 +1,5 @@
 import React,{FC} from 'react';
+import './List1.css'
 // import type {FC} from 'react'
 // tip:FC是一个TS类型
 const List1:FC = ()=>{
