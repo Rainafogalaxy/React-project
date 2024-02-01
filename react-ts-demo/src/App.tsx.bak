@@ -1,6 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+// import "./App.css";
 import type { MouseEvent } from "react";
 // JSX：
 // 所有jsx语法中，标签必须要闭合，每个jsx片段中只能有一个根节点
