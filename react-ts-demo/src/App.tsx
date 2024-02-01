@@ -1,29 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { log } from "console";
+import React from "react";
+import "./App.css";   //引入css样式
 
 function App() {
+  // 问卷列表数据
+  const questionList = [
+    { id: "q1", title: "问卷1", isPublished: false },
+    { id: "q2", title: "问卷2", isPublished: true },
+    { id: "q3", title: "问卷3", isPublished: false },
+    { id: "q4", title: "问卷4", isPublished: true },
+    { id: "q5", title: "问卷5", isPublished: false },
+  ];
+
+  function edit(id: string) {
+    console.log("edit", id);
+  }
   return (
-    // 所有jsx语法中，标签必须要闭合，每个jsx片段中只能有一个根节点
-    // jsx语法中，
-    // 1.class要写为className(因为class是一个关键字)
-    // 2.内嵌样式style，首先要写两个花括号，然后属性名用驼峰式命名,要用对象的形式(属性值要加引号)
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{color:"pink",backgroundColor:"skyblue"}}
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>问卷列表页</h1>
+      <div>
+        {questionList.map((item) => {
+          const { id, title, isPublished } = item;
+          return (
+            <div key={id} className="list-item">
+              <strong>{title}</strong>
+              &nbsp;
+              {/* 条件判断 */}
+              {isPublished ? (
+                <span style={{ color: "green" }}>已发布</span>
+              ) : (
+                <span style={{ color: "red" }}>未发布</span>
+              )}
+              &nbsp;
+              <button
+                onClick={() => {
+                  edit(id);
+                }}
+              >
+                编辑问卷
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

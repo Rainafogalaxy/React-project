@@ -1,0 +1,80 @@
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import type { MouseEvent } from "react";
+// JSX：
+// 所有jsx语法中，标签必须要闭合，每个jsx片段中只能有一个根节点
+// jsx语法中，
+// 1.class要写为className(因为class是一个关键字)
+// 2.内嵌样式style，首先要写两个花括号，然后属性名用驼峰式命名,属性值要用对象的形式(属性值加引号)
+// 3.for要改为htmlFor(也不是很常用)
+// 4.关于括号：使用{xxx}可以插入JS变量，函数，表达式
+
+// 事件：
+// 1.使用onXxx的形式
+// 2.必须传入一个函数( 是fn而不是fn() )   (函数名在这里后面不用加括号，不用加括号！)
+
+// TS:
+// 泛型：
+// function print<T>(info: T) {
+//   console.log(info);
+// }
+//   print<number>(50)
+
+// 条件判断：
+// 1.使用&&
+// 2.使用三元表达式
+// 3.使用函数
+function App() {
+  // 用于演示的函数(没用)
+  const fn = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault(); //阻止默认事件发生
+    event.stopPropagation(); //阻止冒泡
+  };
+
+  const flag = false;
+  function LinkAndZelder(){
+    if(flag) return <p>I Love DohKyungSoo</p>
+    return <p>KyungSoo is the most adorable boy in this world</p>
+  }
+
+  const list = [
+    {username:"KyungSoo",name:"暻秀"},
+    {username:"HoneyClock",name:"可爱"},
+    {username:"HoneyBeast",name:"漂亮"},
+  ]
+  return (
+    <div className="App">
+      <header className="App-header">
+        
+        <ul>
+          {list.map((user)=>{
+            const {username,name} = user;
+            return <li key={username} style={{listStyle:"none"}}>{name}</li>
+          })}
+        </ul>
+        <img src={logo} className="App-logo" alt="logo" />
+        <div>
+          {flag && <p>The Legend Of Zelder</p>}
+          {flag?<p>Link is a cute boy</p>:<p>Zeler is a brave girl</p>}
+          <LinkAndZelder/> 
+          {/* 这里注意，首字母小写的组件会报错 ，上边定义的函数在这里用就是个组件 */}
+        </div>
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
