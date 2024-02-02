@@ -1,15 +1,20 @@
-import React, { FC } from "react";
+import React, { FC, useEffect} from "react";
 import "./QuestionCard.css";
 
 type PropsType = {
   id: string;
   title: string;
   isPublished: boolean;
+  deleteQuestion?:(id:string) => void;  //表示没有返回值
+  publishQuestion?:(id:string)=>void;
 };
 const QuestionCard: FC<PropsType> = (props) => {
-  const { id, title, isPublished } = props;
-  function edit(id: string) {
-    console.log("edit", id);
+  const { id, title, isPublished ,deleteQuestion,publishQuestion} = props;
+  function publish(id: string) {
+    publishQuestion && publishQuestion(id);
+  }
+  function del(id:string){
+    deleteQuestion && deleteQuestion(id)
   }
   return (
     <div key={id} className="list-item">
@@ -24,11 +29,15 @@ const QuestionCard: FC<PropsType> = (props) => {
       &nbsp;
       <button
         onClick={() => {
-          edit(id);
+          publish(id);
         }}
       >
-        编辑问卷
+        发布问卷
       </button>
+      &nbsp;
+      <button onClick={()=>{
+        del(id);
+      }}>删除问卷</button>
     </div>
   );
 };

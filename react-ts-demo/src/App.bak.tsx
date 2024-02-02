@@ -24,6 +24,15 @@ import type { MouseEvent } from "react";
 // 1.使用&&
 // 2.使用三元表达式
 // 3.使用函数
+
+// 副作用useEffect()：
+// 当组件渲染完成后或某个state更新时，加载一个Ajax网络请求，可以使用useEffect()实现
+// tip：任何state更新都会触发组件的更新(就是重新执行函数，然后返回新的jsx，页面重新渲染)
+// 为什么useEffect会执行两次？  (这里执行两次是仅在开发环境下的，react模拟了组件创建，销毁以及再创建的流程，为了及早暴露问题) (生产环境下只会执行一次，生产环境是指将代码发布到服务器)
+
+// 其他内置Hooks：
+// useRef()   一般用于操作DOM,也可以传入普通JS变量,但更新不会触发重新渲染(要和Vue3的ref区分开)
+
 function App() {
   // 用于演示的函数(没用)
   const fn = (event: MouseEvent<HTMLButtonElement>) => {
@@ -52,7 +61,7 @@ function App() {
             return <li key={username} style={{listStyle:"none"}}>{name}</li>
           })}
         </ul>
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <div>
           {flag && <p>The Legend Of Zelder</p>}
           {flag?<p>Link is a cute boy</p>:<p>Zeler is a brave girl</p>}
