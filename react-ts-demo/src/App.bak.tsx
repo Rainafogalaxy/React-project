@@ -32,6 +32,8 @@ import type { MouseEvent } from "react";
 
 // 其他内置Hooks：
 // useRef()   一般用于操作DOM,也可以传入普通JS变量,但更新不会触发重新渲染(要和Vue3的ref区分开)
+// useMemo()  可以缓存数据,不用每次执行函数都重新生成,可以用于计算量较大的场景,缓存提高性能,第一个参数是一个函数,第二个参数是数组(依赖项)
+// useCallback()  和useMemo()的作用一样,但它是专门用来缓存函数的
 
 function App() {
   // 用于演示的函数(没用)
