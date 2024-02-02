@@ -12,7 +12,9 @@ function useMouse(){
         // 监听鼠标事件
         window.addEventListener("mousemove",mouseMoveHandler);
         // 组件销毁时,一定要解绑DOM事件,否则会出现内存泄露的问题
-        
+        return ()=>{
+            window.removeEventListener("mousemove",mouseMoveHandler)
+        }
     },[x,y])
 }
 // 那个组件用了这个useMouse,这个useEffect()就对哪个组件起作用
