@@ -16,8 +16,11 @@ const QuestionCard: FC<PropsType> = (props) => {
   function del(id:string){
     deleteQuestion && deleteQuestion(id)
   }
+
+  let itemClassName = "list-item";
+  if(isPublished) itemClassName += ' published';
   return (
-    <div key={id} className="list-item">
+    <div key={id} className={itemClassName}>
       <strong>{title}</strong>
       &nbsp;
       {/* 条件判断 */}

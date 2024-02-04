@@ -6,16 +6,16 @@ import RefDemo from './useRefDemo';
 // import MemoDemo from "./useMemoDemo";
 // import useMouse from "./hooks/useMouse";
 import useGetInfo from "./hooks/useGetInfo";
-import ClosureTrap from './ClosureTrap'
+// import ClosureTrap from './ClosureTrap'
 function App() {
 
   return (
     <>
       {/* <List1 /> */}
-      {/* <List2/> */}
+      <List2/>
       {/* <RefDemo/> */}
       {/* <MemoDemo/> */}
-      <ClosureTrap/>
+      {/* <ClosureTrap/> */}
     </>
   );
 }

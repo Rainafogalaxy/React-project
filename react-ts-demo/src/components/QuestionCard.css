@@ -2,4 +2,11 @@
     border:1px solid #ccc;
     padding: 10px;
     margin-bottom: 16px;
+    border-radius: 15px;
   }
+  .published{
+    border-color: green;
+  }
+  /* 使用classnames */
+  /* https://www.npmjs.com/package/classnames */
+  /* 使用它就可以不用字符串拼接加样式属性名了，可以使用对象的方式来判断是否应用className */
