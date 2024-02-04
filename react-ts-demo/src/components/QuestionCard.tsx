@@ -1,5 +1,6 @@
 import React, { FC, useEffect} from "react";
-import "./QuestionCard.css";
+import classnames from "classnames";
+import style from "./QuestionCard.module.scss";
 
 type PropsType = {
   id: string;
@@ -17,17 +18,29 @@ const QuestionCard: FC<PropsType> = (props) => {
     deleteQuestion && deleteQuestion(id)
   }
 
-  let itemClassName = "list-item";
-  if(isPublished) itemClassName += ' published';
+  // let itemClassName = "list-item";
+  // if(isPublished) itemClassName += ' published';
+  // const itemClassName = classnames('list-item',{published:isPublished})
+  // const itemClassName = classnames({
+  //   'list-item':true,
+  //   published:isPublished
+  // })
+
+  const listItemClass = style['list-item'];
+  const publishedClass = style.published;
+  const itemClassName = classnames({
+    [listItemClass]:true,
+    [publishedClass]:isPublished,
+  })
   return (
     <div key={id} className={itemClassName}>
       <strong>{title}</strong>
       &nbsp;
       {/* 条件判断 */}
       {isPublished ? (
-        <span style={{ color: "green" }}>已发布</span>
+        <span className={style['published-span']}>已发布</span>
       ) : (
-        <span style={{ color: "red" }}>未发布</span>
+        <span className={style["unpublish-span"]}>未发布</span>
       )}
       &nbsp;
       <button
