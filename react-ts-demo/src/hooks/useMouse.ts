@@ -16,6 +16,7 @@ function useMouse(){
             window.removeEventListener("mousemove",mouseMoveHandler)
         }
     },[x,y])
+    return {x,y}
 }
 // 那个组件用了这个useMouse,这个useEffect()就对哪个组件起作用
 
